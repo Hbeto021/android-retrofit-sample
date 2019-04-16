@@ -1,7 +1,9 @@
-package com.home.project.android_retrofit_sample;
+package com.home.project.android_retrofit_sample.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.home.project.android_retrofit_sample.R;
 
 public class MainActivity extends AppCompatActivity {
 

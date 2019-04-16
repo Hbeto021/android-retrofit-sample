@@ -1,7 +1,11 @@
-package com.home.project.android_retrofit_sample.data;
+package com.home.project.android_retrofit_sample.data.webdata;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
+
+/**
+ * This class prepare the retrofit object with base url, converters, interceptos, clients...
+ */
 
 public class RetrofitConfig {
 
@@ -9,7 +13,8 @@ public class RetrofitConfig {
 
     public RetrofitConfig() {
         this.retrofit = new Retrofit.Builder()
-                .baseUrl("base/url")
-                .addConverterFactory(JacksonConverterFactory.)
+                .baseUrl("https://api.myjson.com/") //set the base url of api
+                .addConverterFactory(JacksonConverterFactory.create()) //set a Json converter to Retrofit
+                .build(); //build Retrofit
     }
 }
