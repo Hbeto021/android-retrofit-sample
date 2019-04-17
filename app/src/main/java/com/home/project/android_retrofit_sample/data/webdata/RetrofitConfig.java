@@ -13,8 +13,14 @@ public class RetrofitConfig {
 
     public RetrofitConfig() {
         this.retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.myjson.com/") //set the base url of api
+                .baseUrl("https://api.myjson.com/") //set the base url of api web service
                 .addConverterFactory(JacksonConverterFactory.create()) //set a Json converter to Retrofit
                 .build(); //build Retrofit
+    }
+
+
+    //create my ApiService with my retrofit object
+    public ApiService getApiService(){
+        return this.retrofit.create(ApiService.class);
     }
 }
