@@ -25,6 +25,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="City name:"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_get_service" />
 
@@ -34,7 +35,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
-        android:text="State"
+        android:text="State:"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_lbl_name" />
 
@@ -45,6 +47,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:text="Country:"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_lbl_state" />
 
@@ -52,7 +55,7 @@
         android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toEndOf="@+id/tv_lbl_name"
         app:layout_constraintTop_toBottomOf="@+id/btn_get_service" />
@@ -61,7 +64,7 @@
         android:id="@+id/tv_state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
         app:layout_constraintStart_toEndOf="@+id/tv_lbl_state"
         app:layout_constraintTop_toBottomOf="@+id/tv_name" />
@@ -70,7 +73,7 @@
         android:id="@+id/tv_country"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
         app:layout_constraintStart_toEndOf="@+id/tv_lbl_country"
         app:layout_constraintTop_toBottomOf="@+id/tv_state" />
