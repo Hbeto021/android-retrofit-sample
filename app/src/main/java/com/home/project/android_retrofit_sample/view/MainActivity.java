@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +21,8 @@ import retrofit2.Retrofit;
 public class MainActivity extends AppCompatActivity {
 
     private TextView tvName, tvState, tvCountry;
+    private TextView tvLblName, tvLblState, tvLblCountry;
+    private ProgressBar progressBar;
     private Button btnGetService;
     private final String LOG = "RESPONSE_SERVICE";
 
@@ -36,7 +39,14 @@ public class MainActivity extends AppCompatActivity {
         tvName = findViewById(R.id.tv_name);
         tvState = findViewById(R.id.tv_state);
         tvCountry = findViewById(R.id.tv_country);
+
+        tvLblName = findViewById(R.id.tv_lbl_name);
+        tvLblState = findViewById(R.id.tv_lbl_state);
+        tvLblCountry = findViewById(R.id.tv_lbl_country);
+
         btnGetService = findViewById(R.id.btn_get_service);
+
+        progressBar = findViewById(R.id.progress_bar);
     }
 
     private void myClickItens() {
@@ -44,9 +54,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                resetFields();
+
+                tvLblName.setVisibility(View.GONE);
+                tvLblState.setVisibility(View.GONE);
+                tvLblCountry.setVisibility(View.GONE);
+
+                progressBar.setVisibility(View.VISIBLE);
+
                 getApiService();
             }
         });
+    }
+
+    private void resetFields() {
+
+        tvName.setText("");
+        tvState.setText("");
+        tvCountry.setText("");
     }
 
     private void getApiService() {
@@ -59,9 +84,14 @@ public class MainActivity extends AppCompatActivity {
                     City city = response.body();
 
                     if (city != null) {
+
                         tvName.setText(city.getName());
                         tvState.setText(city.getState());
                         tvCountry.setText(city.getCountry());
+
+                        tvLblName.setVisibility(View.VISIBLE);
+                        tvLblState.setVisibility(View.VISIBLE);
+                        tvLblCountry.setVisibility(View.VISIBLE);
 
                         Log.e(LOG, city.toString());
                     }
@@ -71,12 +101,15 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "An error has ocurred.", Toast.LENGTH_SHORT).show();
                     Log.e(LOG, "An error has ocurred.");
                 }
+
+                progressBar.setVisibility(View.GONE);
+
             }
 
             @Override
             public void onFailure(Call<City> call, Throwable t) {
 
-
+                progressBar.setVisibility(View.GONE);
                 Toast.makeText(MainActivity.this, "An error has ocurred.", Toast.LENGTH_SHORT).show();
                 Log.e(LOG, "An error has ocurred.");
             }
